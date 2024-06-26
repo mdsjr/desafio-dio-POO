@@ -1,30 +1,29 @@
 package br.com.dio.desafio.dominio;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
-public class Mentoria extends Conteudo {
-    private LocalDate data;
+public class Projeto extends Conteudo {
+    private int dificuldade;
 
     @Override
     public double calcularXp() {
-        return XP_PADRAO + 20d;
+        return XP_PADRAO * dificuldade;
     }
 
-    public LocalDate getData() {
-        return data;
+    public int getDificuldade() {
+        return dificuldade;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDificuldade(int dificuldade) {
+        this.dificuldade = dificuldade;
     }
 
     @Override
     public String toString() {
-        return "Mentoria{" +
+        return "Projeto{" +
                 "titulo='" + getTitulo() + '\'' +
                 ", descricao='" + getDescricao() + '\'' +
-                ", data=" + data +
+                ", dificuldade=" + dificuldade +
                 '}';
     }
 
@@ -32,12 +31,12 @@ public class Mentoria extends Conteudo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Mentoria mentoria = (Mentoria) o;
-        return Objects.equals(data, mentoria.data);
+        Projeto projeto = (Projeto) o;
+        return dificuldade == projeto.dificuldade;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(data);
+        return Objects.hash(dificuldade);
     }
 }
